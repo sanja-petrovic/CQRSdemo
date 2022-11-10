@@ -8,7 +8,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      DATABASE_URL: "jdbc:postgresql://db:5432/user"
+      DATABASE_URL: "jdbc:postgresql://db:5432/users"
       DATABASE_USER: "postgres"
       DATABASE_PW: "password"
     depends_on:
@@ -23,7 +23,7 @@ services:
     ports:
       - "8081:8081"
     environment:
-      DATABASE_URL: "jdbc:postgresql://db:5432/notification"
+      DATABASE_URL: "jdbc:postgresql://db:5432/notifications"
       DATABASE_USER: "postgres"
       DATABASE_PW: "password"
     depends_on:
@@ -70,14 +70,17 @@ services:
     depends_on:
       - "kafka"
   db:
+    container_name: db
     image: debezium/postgres:13
+    volumes:
+      - ./docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-    volumes:
-      - ./data/db/:/var/lib/postgresql/data
+      - POSTGRES_MULTIPLE_DATABASES=notifications,postgres:users,postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+
   connect:
     image: debezium/connect
     ports:

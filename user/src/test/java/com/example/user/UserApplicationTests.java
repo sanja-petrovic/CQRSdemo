@@ -1,10 +1,10 @@
-package com.example.crqrsdemo;
+package com.example.user;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CrqrsDemoApplicationTests {
+class UserApplicationTests {
 
 	@Test
 	void contextLoads() {

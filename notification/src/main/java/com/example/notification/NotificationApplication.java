@@ -1,13 +1,13 @@
-package com.example.crqrsdemo;
+package com.example.notification;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CrqrsDemoApplication {
+public class NotificationApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CrqrsDemoApplication.class, args);
+		SpringApplication.run(NotificationApplication.class, args);
 	}
 
 }
