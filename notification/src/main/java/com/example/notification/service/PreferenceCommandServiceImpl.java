@@ -4,7 +4,7 @@ import com.example.notification.model.Notification;
 import org.springframework.stereotype.Service;
 
 @Service
-public class NotificationCommandServiceImpl implements NotificationCommandService {
+public class PreferenceCommandServiceImpl implements PreferenceCommandService {
     @Override
     public void createNotification(Notification notification) {
 
