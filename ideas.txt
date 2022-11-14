@@ -1,0 +1,27 @@
+Notifications - preferences
+User - users
+
+Notifications are sent to the user.
+User receives notifications sent to them.
+
+User has preferences for notifications that are sent to them. 
+They can opt to receive email notifications, push, both or none.
+
+User can update their notification preference any time. 
+
+What happens when a user registers?
+UI -> 
+-> UserCommandController::create(dto)
+-> UserCommandService::create(user)
+-> UserRepository::save(user)
+-> "UserCreated" event is sent to the outbox
+-> NotificationService listens to outbox.events 
+-> NotificationCommandService::create(preference) - default is ALL
+-> NotificationRepository::save(preference)
+
+What happens when a user decides to update their notification preferences?
+
+UI
+-> NotificationCommandController::update(dto)
+-> NotificationCommandService::update(type, user)
+-> NotificationRepository::update(type, user)  - Changes "type" for the given userId - @Modifying @Query
