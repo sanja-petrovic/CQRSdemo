@@ -5,10 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -26,4 +25,8 @@ public class User {
     private String lastName;
     @Column
     private String email;
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private Set<NotificationPreference> notificationPreferences = new LinkedHashSet<>();
+
 }

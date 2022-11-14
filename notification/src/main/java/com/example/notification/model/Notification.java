@@ -17,6 +17,9 @@ public class Notification {
     @Id
     private UUID id;
     @Column
+    @Enumerated(EnumType.STRING)
+    private NotificationType type;
+    @Column
     private String title;
     @Column
     private String body;
