@@ -1,4 +1,4 @@
 package com.example.user.service;
 
-public interface UserService {
+public interface UserQueryService {
 }
