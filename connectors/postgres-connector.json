@@ -4,7 +4,7 @@
     "database.port": "5432",
     "database.user": "postgres",
     "database.password": "password",
-    "database.dbname" : "postgres",
+    "database.dbname" : "users",
     "database.server.name": "postgres",
     "table.include.list": "public.outbox_items",
     "key.converter.schemas.enabled": false,

@@ -28,6 +28,5 @@ public class OutboxItemServiceImpl implements OutboxItemService {
         log.info(userDto.getEmail());
         OutboxItem outboxItem = OutboxItem.builder().payload(objectMapper.writeValueAsString(userDto)).type("User registered").timestamp(new Date()).aggregateType("event").aggregateId(UUID.randomUUID().toString()).correlationId(UUID.randomUUID().toString()).build();
         repository.save(outboxItem);
-
     }
 }
