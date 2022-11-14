@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/commands")
 public class UserCommandController {
     private final UserCommandService userCommandService;
-    private final OutboxItemService outboxItemService;
 
-    public UserCommandController(UserCommandService userCommandService, OutboxItemService outboxItemService) {
+    public UserCommandController(UserCommandService userCommandService) {
         this.userCommandService = userCommandService;
-        this.outboxItemService = outboxItemService;
     }
 
     @PostMapping("/register")
@@ -31,7 +29,6 @@ public class UserCommandController {
                 .email(dto.getEmail())
                 .build();
         userCommandService.register(user);
-        outboxItemService.save(dto);
         return ResponseEntity.ok().build();
     }
 }

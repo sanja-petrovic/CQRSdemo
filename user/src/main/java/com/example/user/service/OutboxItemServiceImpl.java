@@ -1,5 +1,6 @@
 package com.example.user.service;
 
+import com.example.user.dto.OutboxUserDto;
 import com.example.user.dto.UserDto;
 import com.example.user.model.OutboxItem;
 import com.example.user.repository.OutboxItemRepository;
@@ -24,9 +25,9 @@ public class OutboxItemServiceImpl implements OutboxItemService {
     }
 
     @Override
-    public void save(UserDto userDto) throws JsonProcessingException {
-        log.info(userDto.getEmail());
-        OutboxItem outboxItem = OutboxItem.builder().payload(objectMapper.writeValueAsString(userDto)).type("User registered").timestamp(new Date()).aggregateType("event").aggregateId(UUID.randomUUID().toString()).correlationId(UUID.randomUUID().toString()).build();
+    public void save(OutboxUserDto dto) throws JsonProcessingException {
+        log.info(dto.getId());
+        OutboxItem outboxItem = OutboxItem.builder().payload(objectMapper.writeValueAsString(dto)).type("registered").timestamp(new Date()).aggregateType("registration").aggregateId(UUID.randomUUID().toString()).correlationId(UUID.randomUUID().toString()).build();
         repository.save(outboxItem);
     }
 }

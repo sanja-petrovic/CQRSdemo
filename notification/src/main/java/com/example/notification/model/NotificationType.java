@@ -2,5 +2,7 @@ package com.example.notification.model;
 
 public enum NotificationType {
     PUSH,
-    EMAIL
+    EMAIL,
+    ALL,
+    NONE
 }

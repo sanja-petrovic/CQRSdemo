@@ -1,8 +1,15 @@
 package com.example.notification.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.UUID;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "notification_preferences")
 public class Preference {
