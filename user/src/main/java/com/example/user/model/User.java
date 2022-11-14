@@ -1,9 +1,6 @@
 package com.example.user.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
@@ -18,7 +15,7 @@ import java.util.UUID;
 @Table(name = "users")
 public class User {
     @Id
-    private UUID id;
+    private UUID id = UUID.randomUUID();
     @Column
     private String firstName;
     @Column
@@ -26,7 +23,11 @@ public class User {
     @Column
     private String email;
 
-    @OneToMany(mappedBy = "user", orphanRemoval = true)
-    private Set<NotificationPreference> notificationPreferences = new LinkedHashSet<>();
+    @Builder
+    public User(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 
 }
