@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/commands")
-@ConditionalOnProperty(name = "app.write.enabled", havingValue = "true")
 public class UserCommandController {
     private final UserCommandService userCommandService;
     private final OutboxItemService outboxItemService;
