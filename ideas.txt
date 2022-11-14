@@ -25,3 +25,7 @@ UI
 -> NotificationCommandController::update(dto)
 -> NotificationCommandService::update(type, user)
 -> NotificationRepository::update(type, user)  - Changes "type" for the given userId - @Modifying @Query
+
+Questions:
+How to fit materialized view into this?
+Multiple databases - for command and query?
