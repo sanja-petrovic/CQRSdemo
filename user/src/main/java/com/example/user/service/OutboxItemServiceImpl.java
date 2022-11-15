@@ -1,7 +1,6 @@
 package com.example.user.service;
 
-import com.example.user.dto.OutboxUserDto;
-import com.example.user.dto.UserDto;
+import com.example.user.dto.OutboxDto;
 import com.example.user.model.OutboxItem;
 import com.example.user.repository.OutboxItemRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -25,9 +24,9 @@ public class OutboxItemServiceImpl implements OutboxItemService {
     }
 
     @Override
-    public void save(OutboxUserDto dto) throws JsonProcessingException {
+    public void save(OutboxDto dto) throws JsonProcessingException {
         log.info(dto.getId());
-        OutboxItem outboxItem = OutboxItem.builder().payload(objectMapper.writeValueAsString(dto)).type("registered").timestamp(new Date()).aggregateType("registration").aggregateId(UUID.randomUUID().toString()).correlationId(UUID.randomUUID().toString()).build();
+        OutboxItem outboxItem = OutboxItem.builder().payload(objectMapper.writeValueAsString(dto)).type("preference").timestamp(new Date()).aggregateType("preference").aggregateId(UUID.randomUUID().toString()).correlationId(UUID.randomUUID().toString()).build();
         repository.save(outboxItem);
     }
 }

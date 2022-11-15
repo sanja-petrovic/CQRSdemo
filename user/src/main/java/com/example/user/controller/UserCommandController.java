@@ -1,5 +1,6 @@
 package com.example.user.controller;
 
+import com.example.user.dto.OutboxDto;
 import com.example.user.dto.UserDto;
 import com.example.user.model.User;
 import com.example.user.service.OutboxItemService;
@@ -29,6 +30,12 @@ public class UserCommandController {
                 .email(dto.getEmail())
                 .build();
         userCommandService.register(user);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/preferences/update")
+    public ResponseEntity<?> update(@RequestBody OutboxDto dto) throws Exception {
+        userCommandService.updatePreferences(dto.getId(), dto.getType());
         return ResponseEntity.ok().build();
     }
 }

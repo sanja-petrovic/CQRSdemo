@@ -1,4 +1,4 @@
-package com.example.user.dto;
+package com.example.notification.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OutboxUserDto {
+public class OutboxDto {
     private String id;
+    private String type;
 }
